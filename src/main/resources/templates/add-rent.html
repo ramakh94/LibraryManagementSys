@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Rent Book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+
+<body>
+<div th:insert="fragments/header :: header"></div>
+<div class="container my-5">
+    <h3>Rent Book</h3>
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-10">
+                <form action="#" th:action="@{/add-rent}" th:object="${rent}"
+                      method="post">
+                    <div class="row">
+
+
+                        <div class="form-group col-md-8">
+                            <label for="bookname" class="col-form-label">Book Name</label>
+                            <select th:field ="*{books}" class="form-control" >
+                                <option th:each="book: ${books}" th:value="${book.id}" th:text = "${book.name}"></option>
+                            </select>
+                        </div>
+
+<!--                        <div class="x_content">-->
+<!--                            <div class="alert alert-success alert-dismissible fade in" role="alert" th:if="${successMsg}">-->
+<!--                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>-->
+<!--                                <span th:text="*{successMsg}"></span>-->
+<!--                            </div>-->
+                        <div class="form-group col-md-8">
+                        <label for="customername" class="col-form-label">Customer Name </label>
+                        <input type="text" th:field="*{customer}" class="form-control" id="customername" placeholder="customer Name" />
+                    </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="customercont" class="col-form-label">customer Contact </label>
+                            <input type="text" pattern="(9)\d{9}" th:field="*{contanct}" class="form-control" id="customercont" placeholder="Customer Phone (9)" />
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="period" class="col-form-label">Time to Read </label>
+                            <input type="number" th:field="*{period}" class="form-control" id="period" placeholder="Time To Read" />
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="DateForRent" class="col-form-label">customername </label>
+                            <input type="date" th:field="*{dateOfRent}" class="form-control" id="DateForRent" placeholder="Date For Rent" />
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <input type="submit" class="btn btn-primary" value=" Submit ">
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+
+</html>
